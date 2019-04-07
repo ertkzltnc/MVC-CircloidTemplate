@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewBag.Title = "Urunler";
+}
+@using MVC_CircloidTemplate.Models
+
+@model List<Product>
+
+
+
+
+@section head
+{
+    <script>
+        function productClick(productID) {
+            window.location.href = "/Product/UpdateProduct/" + productID;
+          
+
+        }
+    </script>
+    <style>
+        td:hover {
+            cursor: pointer;
+        }
+    </style>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block">
+            <div class="block-heading">
+                <div class="main-text h2">
+                    Ürünler Listesi
+                </div>
+                <div class="block-controls">
+                    <span aria-hidden="true" class="icon icon-arrow-down icon-size-medium block-control-collapse"></span>
+                    <a href=/Product/AddProduct class="btn btn-success" role="button">Ürün Ekle</a>
+                </div>
+            </div>
+            <div class="block-content-outer">
+                <div class="block-content-inner">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Ürün Adı</th>
+                                <th>TedarikçiID</th>
+
+                                <th>Tedarikçi</th>
+                                <th>KategoriID</th>
+
+                                <th>Kategori</th>
+                                <th>Birimdeki Miktar</th>
+                                <th>Fiyat</th>
+                                <th>Stok</th>
+                                <th>Siparişteki Miktar</th>
+                                <th>Yeniden Şipariş Miktarı</th>
+                                <th>Sonlandı</th>
+                                <th>Sil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (Product prd in Model)
+                                {
+                                    <tr>
+
+                                        <td onclick="productClick(@prd.ProductID)">@prd.ProductName</td>
+                                        <td onclick="productClick(@prd.SupplierID)">@prd.SupplierID</td>
+                                        @if (prd.Supplier?.CompanyName == null)
+                                        {
+                                            <td onclick="productClick(@prd.ProductID)">
+                                                <span class="label label-info"></span>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td onclick="productClick(@prd.ProductID)">
+                                                <span class="label label-info">@prd.Supplier.CompanyName</span>
+                                            </td>
+
+                                        }
+                                        <td onclick="productClick(@prd.CategoryID)">@prd.CategoryID</td>
+                                        @if (prd.Category?.CategoryName == null)
+                                        {
+                                            <td onclick="productClick(@prd.ProductID)">
+                                                <span class="label label-primary"></span>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td onclick="productClick(@prd.ProductID)">
+                                                <span class="label label-primary">@prd.Category.CategoryName</span>
+                                            </td>
+
+
+                                        }
+
+                                        <td onclick="productClick(@prd.ProductID)">@prd.QuantityPerUnit</td>
+                                        <td onclick="productClick(@prd.ProductID)">@prd.UnitPrice</td>
+                                        <td onclick="productClick(@prd.ProductID)">@prd.UnitsInStock</td>
+                                        <td onclick="productClick(@prd.ProductID)">@prd.UnitsOnOrder</td>
+                                        <td onclick="productClick(@prd.ProductID)">@prd.ReorderLevel</td>
+
+                                        @if (prd.Discontinued)
+                                        {
+                                            <td onclick="productClick(@prd.ProductID)"><span class="label label-danger">Satıs Yok</span></td>
+                                        }
+                                        else
+                                        {
+                                            <td onclick="productClick(@prd.ProductID)"><span class="label label-success">Satıs Var</span></td>
+                                        }
+                                        <td><a href="/Product/DeleteProduct?prdID=@prd.ProductID" class="btn btn-danger rounded">Sil</a></td>
+                                    </tr>
+                                }
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
