@@ -53,6 +53,16 @@ namespace MVC_CircloidTemplate.Models
         public virtual DbSet<Sales_Totals_by_Amount> Sales_Totals_by_Amounts { get; set; }
         public virtual DbSet<Summary_of_Sales_by_Quarter> Summary_of_Sales_by_Quarters { get; set; }
         public virtual DbSet<Summary_of_Sales_by_Year> Summary_of_Sales_by_Years { get; set; }
+        public virtual DbSet<aspnet_Applications> aspnet_Applications { get; set; }
+        public virtual DbSet<aspnet_Membership> aspnet_Membership { get; set; }
+        public virtual DbSet<aspnet_Paths> aspnet_Paths { get; set; }
+        public virtual DbSet<aspnet_PersonalizationAllUsers> aspnet_PersonalizationAllUsers { get; set; }
+        public virtual DbSet<aspnet_PersonalizationPerUser> aspnet_PersonalizationPerUser { get; set; }
+        public virtual DbSet<aspnet_Profile> aspnet_Profile { get; set; }
+        public virtual DbSet<aspnet_Roles> aspnet_Roles { get; set; }
+        public virtual DbSet<aspnet_SchemaVersions> aspnet_SchemaVersions { get; set; }
+        public virtual DbSet<aspnet_Users> aspnet_Users { get; set; }
+        public virtual DbSet<aspnet_WebEvent_Events> aspnet_WebEvent_Events { get; set; }
     
         public virtual ObjectResult<CustOrderHist_Result> CustOrderHist(string customerID)
         {

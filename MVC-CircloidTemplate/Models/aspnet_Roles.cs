@@ -12,20 +12,22 @@ namespace MVC_CircloidTemplate.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Category
+    public partial class aspnet_Roles
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Category()
+        public aspnet_Roles()
         {
-            this.Products = new HashSet<Product>();
+            this.aspnet_Users = new HashSet<aspnet_Users>();
         }
     
-        public int CategoryID { get; set; }
-        public string CategoryName { get; set; }
+        public System.Guid ApplicationId { get; set; }
+        public System.Guid RoleId { get; set; }
+        public string RoleName { get; set; }
+        public string LoweredRoleName { get; set; }
         public string Description { get; set; }
-        public byte[] Picture { get; set; }
     
+        public virtual aspnet_Applications aspnet_Applications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<aspnet_Users> aspnet_Users { get; set; }
     }
 }

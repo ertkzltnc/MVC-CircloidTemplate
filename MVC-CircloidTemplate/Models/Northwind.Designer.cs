@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Section1.DESKTOP-2JD3BUB\source\repos\NT-MVC-CircloidTemplate\MVC-CircloidTemplate\Models\Northwind.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Section1.DESKTOP-2JD3BUB\Documents\GitHub\NT-MVC-CircloidTemplate\MVC-CircloidTemplate\Models\Northwind.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

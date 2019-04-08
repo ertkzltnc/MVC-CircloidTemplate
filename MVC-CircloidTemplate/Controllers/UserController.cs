@@ -17,6 +17,7 @@ namespace MVC_CircloidTemplate.Controllers
         // GET: User
         public ActionResult Index()
         {
+            // databasedde ki userları cekip user isimli collectionda toplayacak
             MembershipUserCollection users = Membership.GetAllUsers();
             return View(users);
 

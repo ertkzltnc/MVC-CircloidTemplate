@@ -9,7 +9,7 @@ namespace MVC_CircloidTemplate.Controllers
 {
     public class ProductController : Controller
     {
-
+        
         public ProductController()
         {
             ViewBag.ProductSelected = "selected";
