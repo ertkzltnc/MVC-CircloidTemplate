@@ -128,12 +128,16 @@ namespace MVC_CircloidTemplate.Controllers
         [HttpPost]
         public ActionResult AssingRole(string userName, List<string> addedRoles)
         {
+            if (addedRoles==null)
+            {
+                return RedirectToAction("AssingRole", new { userName = userName, message = "Once Rol Seciniz" });
+            }
             if (addedRoles.Count < 1)
             {
-                return RedirectToAction("AssingRoles", new { userName = userName, message = "Hata" });
+                return RedirectToAction("AssingRole", new { userName = userName, message = "Hata" });
             }
             Roles.AddUserToRoles(userName, addedRoles.ToArray());
-            return RedirectToAction("AssingRoles", new { userName = userName, message = "Basarılı" });
+            return RedirectToAction("AssingRole", new { userName = userName, message = "Basarılı" });
         }
 
         [HttpPost]
