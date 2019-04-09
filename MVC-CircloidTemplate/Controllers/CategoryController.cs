@@ -11,7 +11,7 @@ namespace MVC_CircloidTemplate.Controllers
 
     public class CategoryController : Controller
     {
-        NorthwindEntities db = new NorthwindEntities();
+        NorthwindEntities1 db = new NorthwindEntities1();
 
         public CategoryController()
         {

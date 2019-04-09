@@ -14,7 +14,7 @@ namespace MVC_CircloidTemplate.Controllers
         {
             ViewBag.ProductSelected = "selected";
         }
-        NorthwindEntities db = new NorthwindEntities();
+        NorthwindEntities1 db = new NorthwindEntities1();
         // GET: Product
         public ActionResult Index()
         {

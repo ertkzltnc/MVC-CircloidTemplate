@@ -19,16 +19,26 @@ namespace MVC_CircloidTemplate.Controllers
             List<string> rolesList= Roles.GetAllRoles().ToList();
             return View(rolesList);
         }
-        public ActionResult AddRole()
+        public ActionResult AddRole(string message=null)
         {
+            ViewBag.Message = message;
             return View();
         }
        
         [HttpPost]
-        public ActionResult AddRole(string RoleName)
+        [ActionName("AddRole")]
+        public ActionResult AddRolePost(string RoleName)
         {
+            if (string.IsNullOrWhiteSpace(RoleName))
+            {
+                return RedirectToAction("AddRole", new { message = "Boş olamaz" });
+            }
+            if (Roles.RoleExists(RoleName))
+            {
+                return RedirectToAction("AddRole", new { message = "Rol Mevcut" });
+            }
             Roles.CreateRole(RoleName);
-            return RedirectToAction("Index");
+            return RedirectToAction("AddRole", new { message = "Basarılı" });
         }
 
        

@@ -66,7 +66,7 @@
 
                                         <td onclick="productClick(@prd.ProductID)">@prd.ProductName</td>
                                         <td onclick="productClick(@prd.SupplierID)">@prd.SupplierID</td>
-                                        @if (prd.Supplier?.CompanyName == null)
+                                        @if (prd.Supplier == null)
                                         {
                                             <td onclick="productClick(@prd.ProductID)">
                                                 <span class="label label-info"></span>
@@ -80,7 +80,7 @@
 
                                         }
                                         <td onclick="productClick(@prd.CategoryID)">@prd.CategoryID</td>
-                                        @if (prd.Category?.CategoryName == null)
+                                        @if (prd.Category == null)
                                         {
                                             <td onclick="productClick(@prd.ProductID)">
                                                 <span class="label label-primary"></span>

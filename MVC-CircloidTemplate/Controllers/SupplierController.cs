@@ -9,7 +9,7 @@ namespace MVC_CircloidTemplate.Controllers
 {
     public class SupplierController : Controller
     {
-        NorthwindEntities db = new NorthwindEntities();
+        NorthwindEntities1 db = new NorthwindEntities1();
 
         // GET: Supplier
 

@@ -19,9 +19,23 @@
                 <div class="block-content-inner">
                     <form action="/Role/AddRole" method="post" role="form" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Rol Adı:</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Role adı giriniz" name="RoleName">
+
+                            @{
+                                string message = ViewBag.Message;
+                                if (message != null)
+                                {
+                                    if (message == "Basarılı")
+                                    {
+                                        <label class="text-success">@message</label>
+                                    }
+                                    else
+                                    {
+                                        <label class="text-danger">@message</label>
+                                    }
+                                }
+                            }
                         </div>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Role Giriniz" name="RoleName">
                         <button type="submit" class="btn btn-primary">Kaydet</button>
                     </form>
                 </div>
