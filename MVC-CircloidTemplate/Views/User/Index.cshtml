@@ -11,7 +11,7 @@
     <script>
 
         $(".userDelete").click(function () {
-            
+
             var sonuc = confirm("Kayit silinsin mi?");
             if (sonuc) {
                 var ua = $(this).data("username");
@@ -30,6 +30,22 @@
         });
 
     </script>
+}
+
+@section head
+{
+    <script src="~/Content/assets/js/required/jquery-1.11.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".addRole").on('click', function () {
+                const userName = $(this).attr("data-userName");
+               
+                console.log(userName);
+                window.location.href = "/User/AssingRole?userName=" + userName
+            });
+        });
+    </script>
+
 }
 
 
@@ -54,6 +70,8 @@
                                 <th>Email</th>
                                 <th>Kayıt Tarihi</th>
                                 <th>Son Giriş Tarihi</th>
+                                <th>Rolleri</th>
+                                <th>RolAta</th>
                                 <th>Sil</th>
                             </tr>
                         </thead>
@@ -65,10 +83,13 @@
                                     <td>@mu.Email</td>
                                     <td>@mu.CreationDate</td>
                                     <td>@mu.LastLoginDate</td>
-                                    <td><a href="#" class="btn btn-danger userDelete" data-username="@mu.UserName">Sil</a></td>
+                                    <td><a class="btn btn-primary roles" data-userName="@mu.UserName">Rolleri</a></td>
+                                    <td><a class="btn btn-primary addRole" data-userName="@mu.UserName">Rol Ekle</a></td>
+                                    <td><a href="#" class="btn btn-danger userDelete" data-userName="@mu.UserName">Sil</a></td>
 
                                 </tr>
                             }
+
                         </tbody>
                     </table>
                 </div>

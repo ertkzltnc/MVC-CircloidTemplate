@@ -86,5 +86,68 @@ namespace MVC_CircloidTemplate.Controllers
         {
             Membership.DeleteUser(id, deleteAllRelatedData: true);
         }
+
+        public ActionResult AssingRole(string userName,string message= null)
+        {
+            /* Parametre olarak ıd yazmak zorundayız. sebebi projein App_start  klasörünün altında
+             Route.Config dosyasında "{controller}/{action}/{id}" bu parametre adının default adı id olduğu için parametre adıda 
+             id olması gerekiyor.
+             
+             
+             kullanıcı Rol Ata ya tıkladığında  kullanıcı adını parametre olarak alıyoruz. burada da kullanıcının adını View'e gönderiyoruz.
+              Amacımız parametre bilgisinin View'e taşımak .View Tarafında ekle butonuna basılınca  tekrar kullanıcı adının alıp ve rol adının
+              View'den Post tarafına taşımak*/
+
+            if (string.IsNullOrWhiteSpace(userName))
+            {
+                return RedirectToAction("Index");
+
+            }
+            MembershipUser user = Membership.GetUser(userName);
+            if (user==null)
+            {
+                return HttpNotFound();
+            }
+            string[] userRoles = Roles.GetRolesForUser(userName);
+            string[] allRoles = Roles.GetAllRoles();
+            List<string> availableRoles = new List<string>();
+            foreach (string role in allRoles)
+            {
+                if (!userRoles.Contains(role))
+                {
+                    availableRoles.Add(role);
+                }
+            }
+
+            ViewBag.AvailableRoles = availableRoles;
+            ViewBag.UserRoles = userRoles;
+            ViewBag.UserName = userName;
+            ViewBag.Message = message;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AssingRole(string userName, List<string> addedRoles)
+        {
+            if (addedRoles.Count < 1)
+            {
+                return RedirectToAction("AssingRoles", new { userName = userName, message = "Hata" });
+            }
+            Roles.AddUserToRoles(userName, addedRoles.ToArray());
+            return RedirectToAction("AssingRoles", new { userName = userName, message = "Basarılı" });
+        }
+
+        [HttpPost]
+        public string DeleteRole(string userName, string  removedRoles)
+        {
+            string[] removedRolesArray = removedRoles.Split(',');
+            if (removedRolesArray.Length<1 || string.IsNullOrWhiteSpace(removedRolesArray[0]))
+            {
+                return "Hata";
+            }
+
+            Roles.RemoveUserFromRoles(userName, removedRolesArray);
+            return "Basarılı";
+        }
+
     }
 }
