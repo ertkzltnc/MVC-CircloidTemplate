@@ -62,52 +62,52 @@
                             @{
                                 foreach (Product prd in Model)
                                 {
-                                    <tr>
+                                    <tr  onclick="productClick(@prd.ProductID)">
 
-                                        <td onclick="productClick(@prd.ProductID)">@prd.ProductName</td>
-                                        <td onclick="productClick(@prd.SupplierID)">@prd.SupplierID</td>
+                                        <td>@prd.ProductName</td>
+                                        <td >@prd.SupplierID</td>
                                         @if (prd.Supplier == null)
                                         {
-                                            <td onclick="productClick(@prd.ProductID)">
+                                            <td >
                                                 <span class="label label-info"></span>
                                             </td>
                                         }
                                         else
                                         {
-                                            <td onclick="productClick(@prd.ProductID)">
+                                            <td >
                                                 <span class="label label-info">@prd.Supplier.CompanyName</span>
                                             </td>
 
                                         }
-                                        <td onclick="productClick(@prd.CategoryID)">@prd.CategoryID</td>
+                                        <td >@prd.CategoryID</td>
                                         @if (prd.Category == null)
                                         {
-                                            <td onclick="productClick(@prd.ProductID)">
+                                            <td >
                                                 <span class="label label-primary"></span>
                                             </td>
                                         }
                                         else
                                         {
-                                            <td onclick="productClick(@prd.ProductID)">
+                                            <td>
                                                 <span class="label label-primary">@prd.Category.CategoryName</span>
                                             </td>
 
 
                                         }
 
-                                        <td onclick="productClick(@prd.ProductID)">@prd.QuantityPerUnit</td>
-                                        <td onclick="productClick(@prd.ProductID)">@prd.UnitPrice</td>
-                                        <td onclick="productClick(@prd.ProductID)">@prd.UnitsInStock</td>
-                                        <td onclick="productClick(@prd.ProductID)">@prd.UnitsOnOrder</td>
-                                        <td onclick="productClick(@prd.ProductID)">@prd.ReorderLevel</td>
+                                        <td >@prd.QuantityPerUnit</td>
+                                        <td >@prd.UnitPrice</td>
+                                        <td >@prd.UnitsInStock</td>
+                                        <td >@prd.UnitsOnOrder</td>
+                                        <td >@prd.ReorderLevel</td>
 
                                         @if (prd.Discontinued)
                                         {
-                                            <td onclick="productClick(@prd.ProductID)"><span class="label label-danger">Satıs Yok</span></td>
+                                            <td ><span class="label label-danger">Satıs Yok</span></td>
                                         }
                                         else
                                         {
-                                            <td onclick="productClick(@prd.ProductID)"><span class="label label-success">Satıs Var</span></td>
+                                            <td ><span class="label label-success">Satıs Var</span></td>
                                         }
                                         <td><a href="/Product/DeleteProduct?prdID=@prd.ProductID" class="btn btn-danger rounded">Sil</a></td>
                                     </tr>
