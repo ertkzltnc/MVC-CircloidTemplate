@@ -28,6 +28,25 @@
                 });
             }
         });
+        $(".roles").click(function () {
+
+            var ua = $(this).attr("data-userName");
+
+            $.ajax({
+                type: "POST",
+                url: "/User/UserRole/",
+                data: { userName: ua },
+                success: function (rol) {
+                    alert(rol);
+                },
+                error: function () {
+                    alert("error")
+                }
+            })
+        })
+     
+           
+      
 
     </script>
 }
@@ -39,11 +58,14 @@
         $(document).ready(function () {
             $(".addRole").on('click', function () {
                 const userName = $(this).attr("data-userName");
-               
+
                 console.log(userName);
                 window.location.href = "/User/AssingRole?userName=" + userName
             });
         });
+
+       
+       
     </script>
 
 }

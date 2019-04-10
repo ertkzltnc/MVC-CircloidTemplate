@@ -127,7 +127,7 @@ namespace MVC_CircloidTemplate.Controllers
         }
         [HttpPost]
         public ActionResult AssingRole(string userName, List<string> addedRoles)
-        {
+          {
             if (addedRoles==null)
             {
                 return RedirectToAction("AssingRole", new { userName = userName, message = "Once Rol Seciniz" });
@@ -153,5 +153,19 @@ namespace MVC_CircloidTemplate.Controllers
             return "Basarılı";
         }
 
+
+        [HttpPost]
+        public string UserRole(string userName)
+        {
+            List<string> userRol = Roles.GetRolesForUser(userName).ToList();
+            string rol = "";
+            foreach (string r in userRol)
+            {
+                rol += r + ",";
+            }
+            if (rol.Length > 1)
+                rol = rol.Remove(rol.Length - 1, 1);
+            return rol;
+        }
     }
 }
