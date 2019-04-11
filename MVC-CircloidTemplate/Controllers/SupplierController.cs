@@ -7,7 +7,7 @@ using MVC_CircloidTemplate.Models;
 
 namespace MVC_CircloidTemplate.Controllers
 {
-    [Authorize(Roles ="uye")]
+    [Authorize(Roles = "uye , admin")]
     public class SupplierController : Controller
     {
         NorthwindEntities1 db = new NorthwindEntities1();

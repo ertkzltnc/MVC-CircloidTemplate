@@ -7,7 +7,7 @@ using MVC_CircloidTemplate.Models;
 
 namespace MVC_CircloidTemplate.Controllers
 {
-    [Authorize(Roles ="uye")]
+    [Authorize(Roles = "uye , admin")]
     public class ProductController : Controller
     {
         
