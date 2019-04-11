@@ -8,6 +8,7 @@ using MVC_CircloidTemplate.Add_Classes;
 
 namespace MVC_CircloidTemplate.Controllers
 {
+    [Authorize(Roles="admin")]
     public class UserController : Controller
     {
         public UserController()

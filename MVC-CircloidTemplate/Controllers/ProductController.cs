@@ -7,6 +7,7 @@ using MVC_CircloidTemplate.Models;
 
 namespace MVC_CircloidTemplate.Controllers
 {
+    [Authorize(Roles ="uye")]
     public class ProductController : Controller
     {
         

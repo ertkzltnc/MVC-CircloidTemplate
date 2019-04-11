@@ -7,6 +7,7 @@ using System.Web.Security;
 
 namespace MVC_CircloidTemplate.Controllers
 {
+    [Authorize(Roles ="admin")]
     public class RoleController : Controller
     {
         public RoleController()

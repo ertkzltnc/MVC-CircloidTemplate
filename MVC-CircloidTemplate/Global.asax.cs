@@ -13,6 +13,7 @@ namespace MVC_CircloidTemplate
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
         }
     }
 }

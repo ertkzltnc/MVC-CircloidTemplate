@@ -1181,6 +1181,8 @@
     <Content Include="Views\Role\AddRole.cshtml" />
     <Content Include="Views\User\AssingRole.cshtml" />
     <Content Include="Views\Member\MemberLogin.cshtml" />
+    <Content Include="Views\Member\CreateNewAccount.cshtml" />
+    <Content Include="Views\Member\ForgotMyPassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

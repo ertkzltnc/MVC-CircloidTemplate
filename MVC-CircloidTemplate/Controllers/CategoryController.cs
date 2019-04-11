@@ -8,7 +8,7 @@ using MVC_CircloidTemplate.Models;
 
 namespace MVC_CircloidTemplate.Controllers
 {
-
+    [Authorize(Roles ="uye")]
     public class CategoryController : Controller
     {
         NorthwindEntities1 db = new NorthwindEntities1();
