@@ -76,9 +76,10 @@
                           
                             <ul class="header-profile-menu">
                                 <li>
-                                    <a href="#" class="top">
+                                    <a href="#" class="top"> 
                                         <span class="main-menu-text">
-                                            Hosgeldin @User.Identity.Name
+                                            @*Hosgeldin @User.Identity.Name*@
+                                            Hosgeldin  @Membership.GetUser().UserName
                                        
                                             <i class="icon icon-arrow-down-bold-round icon-size-small"></i>
                                         </span>

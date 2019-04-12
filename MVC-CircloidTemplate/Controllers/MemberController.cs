@@ -57,7 +57,7 @@ namespace MVC_CircloidTemplate.Controllers
 
         public ActionResult CreateNewAccount(User u)
         {
-            Membership.CreateUser(u.UserName, u.Password, u.Email, u.PasswordQuestion, u.PasswordAnswer, true, out MembershipCreateStatus status);
+            Membership.CreateUser(u.UserName, u.Password,u.Email, u.PasswordQuestion, u.PasswordAnswer, true, out MembershipCreateStatus status);
 
             string message = "";
             switch (status)
@@ -97,6 +97,7 @@ namespace MVC_CircloidTemplate.Controllers
                     break;
                 case MembershipCreateStatus.Success:
                     message = "Basarılı";
+                   
                     break;
                 default:
                     break;
