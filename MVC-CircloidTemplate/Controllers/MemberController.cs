@@ -112,10 +112,25 @@ namespace MVC_CircloidTemplate.Controllers
         }
     
 
-     
-        public ActionResult ForgotMyPassword()
+        [HttpGet]
+        public ActionResult ForgotMyPassword(string id)
         {
-            return View();
+            List<string> vs = new List<string>();
+            if (id != null)
+            {
+                vs.Add(id);
+                return View(vs);
+            }
+            else
+            {
+                id = "Kullanıcı Adı:";
+                vs.Add(id);
+                return View(vs);
+               
+            }
+        
+
+
         }
 
       

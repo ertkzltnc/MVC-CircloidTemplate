@@ -142,6 +142,7 @@
                                 {
                                     <p style="color:green" id="message">@ViewBag.Message</p>
                                 }
+                              
 
                             </form>
                         </div>
@@ -184,16 +185,19 @@
             var password =  $("#Password").val();
             var confirmPassword = $("#ConfirmPassword").val();
          
-
+           
            
             if (password === confirmPassword)
             {
+               
                 return true;
+
             }
             else
             {
-                alert("Sifre Farklı")
-              
+                alert("Sifre Farklı");
+             
+               
 
                 return false;
             }
@@ -201,4 +205,4 @@
         </script>
 
 </body>
-</html>
+</html> 
