@@ -1013,6 +1013,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Add-Classes\Cart.cs" />
     <Compile Include="Add-Classes\User.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoryController.cs" />

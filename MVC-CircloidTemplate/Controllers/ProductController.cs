@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MVC_CircloidTemplate.Add_Classes;
 using MVC_CircloidTemplate.Models;
 
 namespace MVC_CircloidTemplate.Controllers
@@ -122,6 +123,42 @@ namespace MVC_CircloidTemplate.Controllers
             db.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+
+
+        [HttpPost]
+        public string AddCartProduct(int id)
+        {
+            // Sepet varsa ,geeln üzürün var olan sepğete ekle,Sepet yoksa önce aktif Session 
+            // oturum için olustur ve olusan yeni sepete gelen ürünü ekle
+            string cartMessage;
+            Cart c;
+            if (Session["CurrrentCart"] == null)
+            {
+                c = new Cart();
+
+            }
+            else
+            {
+                c = (Cart)Session["CurrrentCart"];
+            }
+            foreach ( Product  p in c.PrdList)
+            {
+                if (p.ProductID==id)
+                {
+                    cartMessage= "Eklemek Itediğiniz Urun Sepette Mevcut";
+                    return cartMessage;
+                }
+                
+            }
+            Product prd = db.Products.FirstOrDefault(x => x.ProductID == id);
+            
+            c.PrdList.Add(prd);
+            Session["CurrrentCart"] = c;
+            cartMessage = "Sectiğiniz Urun Sepete Eklendi";
+            return cartMessage;
+
+            
         }
 
 

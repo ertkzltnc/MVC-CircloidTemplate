@@ -14,7 +14,7 @@
     <script>
         function productClick(productID) {
             window.location.href = "/Product/UpdateProduct/" + productID;
-          
+
 
         }
     </script>
@@ -55,6 +55,7 @@
                                 <th>Siparişteki Miktar</th>
                                 <th>Yeniden Şipariş Miktarı</th>
                                 <th>Sonlandı</th>
+                                <th>Sepete Ekle</th>
                                 <th>Guncelle</th>
                                 <th>Sil</th>
                             </tr>
@@ -63,56 +64,59 @@
                             @{
                                 foreach (Product prd in Model)
                                 {
-                            <tr onclick="productClick(@prd.ProductID)">
+                                    <tr>
 
-                                <td>@prd.ProductName</td>
-                                <td>@prd.SupplierID</td>
-                                @if (prd.Supplier == null)
-                                {
-                                    <td>
-                                        <span class="label label-info"></span>
-                                    </td>
-                                }
-                                else
-                                {
-                                    <td>
-                                        <span class="label label-info">@prd.Supplier.CompanyName</span>
-                                    </td>
+                                        <td onclick="productClick(@prd.ProductID)">@prd.ProductName</td>
+                                        <td>@prd.SupplierID</td>
+                                        @if (prd.Supplier == null)
+                                        {
+                                            <td>
+                                                <span class="label label-info"></span>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                <span class="label label-info">@prd.Supplier.CompanyName</span>
+                                            </td>
 
-                                }
-                                <td>@prd.CategoryID</td>
-                                @if (prd.Category == null)
-                                {
-                                    <td>
-                                        <span class="label label-primary"></span>
-                                    </td>
-                                }
-                                else
-                                {
-                                    <td>
-                                        <span class="label label-primary">@prd.Category.CategoryName</span>
-                                    </td>
+                                        }
+                                        <td>@prd.CategoryID</td>
+                                        @if (prd.Category == null)
+                                        {
+                                            <td>
+                                                <span class="label label-primary"></span>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                <span class="label label-primary">@prd.Category.CategoryName</span>
+                                            </td>
 
 
-                                }
+                                        }
 
-                                <td>@prd.QuantityPerUnit</td>
-                                <td>@prd.UnitPrice</td>
-                                <td>@prd.UnitsInStock</td>
-                                <td>@prd.UnitsOnOrder</td>
-                                <td>@prd.ReorderLevel</td>
+                                        <td>@prd.QuantityPerUnit</td>
+                                        <td>@prd.UnitPrice</td>
+                                        <td>@prd.UnitsInStock</td>
+                                        <td>@prd.UnitsOnOrder</td>
+                                        <td>@prd.ReorderLevel</td>
 
-                                @if (prd.Discontinued)
-                                {
-                                    <td><span class="label label-danger">Satıs Yok</span></td>
-                                }
-                                else
-                                {
-                                    <td><span class="label label-success">Satıs Var</span></td>
-                                }
-                                <td><a href="/Product/UpdateProduct2?prdID=@prd.ProductID&prdName=@prd.ProductName" class="btn btn-info rounded">Guncelle</a></td>
-                                <td><a href="/Product/DeleteProduct?prdID=@prd.ProductID" class="btn btn-danger rounded">Sil</a></td>
-                            </tr>
+                                        @if (prd.Discontinued)
+                                        {
+                                            <td><span class="label label-danger">Satıs Yok</span></td>
+                                            <td><a class="btn btn-default addCart" data-id="@prd.ProductID" href="#" disabled>Sepete Ekle</td>
+                                        }
+                                        else
+                                        {
+                                            <td><span class="label label-success">Satıs Var</span></td>
+                                            <td><a class="btn btn-default addCart" data-id="@prd.ProductID" href="#">Sepete Ekle</td>
+                                        }
+
+                                        <td><a href="/Product/UpdateProduct2?prdID=@prd.ProductID&prdName=@prd.ProductName" class="btn btn-info rounded">Guncelle</a></td>
+                                        <td><a href="/Product/DeleteProduct?prdID=@prd.ProductID" class="btn btn-danger rounded">Sil</a></td>
+                                    </tr>
                                 }
                             }
 
@@ -123,3 +127,24 @@
         </div>
     </div>
 </div>
+@section scripts{
+    @*<script src="~/Content/assets/js/required/jquery-1.11.1.min.js"></script>*@
+    <script>
+        $(".addCart").click(function () {
+            var id = $(this).data("id");
+            $.ajax({
+                type: "POST",
+                url: "/Product/AddCartProduct/" + id,
+                success: function (response) {
+                    alert(response);
+                },
+                error: function () {
+                    alert("Sepete Ekleme Sırasında  ajax hatası oluştu");
+
+                }
+
+            });
+        });
+    </script>
+
+}

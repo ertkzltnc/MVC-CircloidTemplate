@@ -17,7 +17,7 @@
                 var ua = $(this).data("username");
                 $.ajax({
                     type: "POST",
-                    url: "/User/DeleteUser/" + ua,
+                    url: "/User/DeleteUser/" + ua, 
                     success: function () {
                         alert("Kayit silindi");
                         window.location.replace("/User/Index");
