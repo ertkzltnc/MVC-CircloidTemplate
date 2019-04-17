@@ -22,5 +22,18 @@ namespace MVC_CircloidTemplate.Controllers
         
             return View();
         }
+        public ActionResult AssingCookie()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AssingCookie(string CookieName, string CookieValue)
+        {
+            HttpCookie hc = new HttpCookie(CookieName);
+            hc.Value = CookieValue;
+            hc.Expires = DateTime.Now.AddDays(2);
+            Response.Cookies.Add(hc);
+            return View();
+        }
     }
 }

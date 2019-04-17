@@ -1183,6 +1183,8 @@
     <Content Include="Views\Member\MemberLogin.cshtml" />
     <Content Include="Views\Member\CreateNewAccount.cshtml" />
     <Content Include="Views\Member\ForgotMyPassword.cshtml" />
+    <Content Include="Views\Product\UpdateProduct2.cshtml" />
+    <Content Include="Views\Home\AssingCookie.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

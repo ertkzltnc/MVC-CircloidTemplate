@@ -55,6 +55,7 @@
                                 <th>Siparişteki Miktar</th>
                                 <th>Yeniden Şipariş Miktarı</th>
                                 <th>Sonlandı</th>
+                                <th>Guncelle</th>
                                 <th>Sil</th>
                             </tr>
                         </thead>
@@ -62,55 +63,56 @@
                             @{
                                 foreach (Product prd in Model)
                                 {
-                                    <tr  onclick="productClick(@prd.ProductID)">
+                            <tr onclick="productClick(@prd.ProductID)">
 
-                                        <td>@prd.ProductName</td>
-                                        <td >@prd.SupplierID</td>
-                                        @if (prd.Supplier == null)
-                                        {
-                                            <td >
-                                                <span class="label label-info"></span>
-                                            </td>
-                                        }
-                                        else
-                                        {
-                                            <td >
-                                                <span class="label label-info">@prd.Supplier.CompanyName</span>
-                                            </td>
+                                <td>@prd.ProductName</td>
+                                <td>@prd.SupplierID</td>
+                                @if (prd.Supplier == null)
+                                {
+                                    <td>
+                                        <span class="label label-info"></span>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <span class="label label-info">@prd.Supplier.CompanyName</span>
+                                    </td>
 
-                                        }
-                                        <td >@prd.CategoryID</td>
-                                        @if (prd.Category == null)
-                                        {
-                                            <td >
-                                                <span class="label label-primary"></span>
-                                            </td>
-                                        }
-                                        else
-                                        {
-                                            <td>
-                                                <span class="label label-primary">@prd.Category.CategoryName</span>
-                                            </td>
+                                }
+                                <td>@prd.CategoryID</td>
+                                @if (prd.Category == null)
+                                {
+                                    <td>
+                                        <span class="label label-primary"></span>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <span class="label label-primary">@prd.Category.CategoryName</span>
+                                    </td>
 
 
-                                        }
+                                }
 
-                                        <td >@prd.QuantityPerUnit</td>
-                                        <td >@prd.UnitPrice</td>
-                                        <td >@prd.UnitsInStock</td>
-                                        <td >@prd.UnitsOnOrder</td>
-                                        <td >@prd.ReorderLevel</td>
+                                <td>@prd.QuantityPerUnit</td>
+                                <td>@prd.UnitPrice</td>
+                                <td>@prd.UnitsInStock</td>
+                                <td>@prd.UnitsOnOrder</td>
+                                <td>@prd.ReorderLevel</td>
 
-                                        @if (prd.Discontinued)
-                                        {
-                                            <td ><span class="label label-danger">Satıs Yok</span></td>
-                                        }
-                                        else
-                                        {
-                                            <td ><span class="label label-success">Satıs Var</span></td>
-                                        }
-                                        <td><a href="/Product/DeleteProduct?prdID=@prd.ProductID" class="btn btn-danger rounded">Sil</a></td>
-                                    </tr>
+                                @if (prd.Discontinued)
+                                {
+                                    <td><span class="label label-danger">Satıs Yok</span></td>
+                                }
+                                else
+                                {
+                                    <td><span class="label label-success">Satıs Var</span></td>
+                                }
+                                <td><a href="/Product/UpdateProduct2?prdID=@prd.ProductID&prdName=@prd.ProductName" class="btn btn-info rounded">Guncelle</a></td>
+                                <td><a href="/Product/DeleteProduct?prdID=@prd.ProductID" class="btn btn-danger rounded">Sil</a></td>
+                            </tr>
                                 }
                             }
 

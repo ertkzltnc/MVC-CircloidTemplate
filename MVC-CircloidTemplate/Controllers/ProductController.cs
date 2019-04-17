@@ -64,11 +64,10 @@ namespace MVC_CircloidTemplate.Controllers
         }
         public ActionResult UpdateProduct(int id)
         {
-           
+
+
+            
             Product product = db.Products.Find(id);
-
-          
-
             ViewBag.catList = db.Categories.ToList();
             ViewBag.supList = db.Suppliers.ToList();
 
@@ -78,10 +77,10 @@ namespace MVC_CircloidTemplate.Controllers
         [HttpPost]
         public ActionResult UpdateProduct(Product prd)
         {
+
+
+            
             Product product = db.Products.Find(prd.ProductID);
-
-           
-
             product.ProductName = prd.ProductName;
             product.UnitPrice = prd.UnitPrice;
             product.UnitsInStock = prd.UnitsInStock;
@@ -92,6 +91,40 @@ namespace MVC_CircloidTemplate.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult UpdateProduct2()
+        {
+            
+
+            int proID = Convert.ToInt32(Request.QueryString["prdID"].ToString());
+            string proName = Request.QueryString["prdName"].ToString();
+
+            Product product = db.Products.FirstOrDefault(x => x.ProductID == proID);
+            ViewBag.catList = db.Categories.ToList();
+            ViewBag.supList = db.Suppliers.ToList();
+
+
+            return View(product);
+        }
+        [HttpPost]
+        public ActionResult UpdateProduct2(Product prd)
+        {
+
+
+            
+            Product product = db.Products.Find(prd.ProductID);
+            product.ProductName = prd.ProductName;
+            product.UnitPrice = prd.UnitPrice;
+            product.UnitsInStock = prd.UnitsInStock;
+            product.CategoryID = prd.CategoryID;
+            product.SupplierID = prd.SupplierID;
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+
 
     }
 }
