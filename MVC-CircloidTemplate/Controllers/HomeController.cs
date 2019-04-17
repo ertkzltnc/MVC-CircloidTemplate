@@ -35,5 +35,12 @@ namespace MVC_CircloidTemplate.Controllers
             Response.Cookies.Add(hc);
             return View();
         }
+        public ActionResult RetrieveCookie()
+        {
+            string cookieVal = Request.Cookies["ert"].Value.ToString();
+            ViewBag.CookieValue = cookieVal;
+            return View();
+        }
+
     }
 }

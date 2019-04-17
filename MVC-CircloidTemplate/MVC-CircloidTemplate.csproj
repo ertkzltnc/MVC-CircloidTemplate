@@ -1185,6 +1185,7 @@
     <Content Include="Views\Member\ForgotMyPassword.cshtml" />
     <Content Include="Views\Product\UpdateProduct2.cshtml" />
     <Content Include="Views\Home\AssingCookie.cshtml" />
+    <Content Include="Views\Home\RetrieveCookie.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
